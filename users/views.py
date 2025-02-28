@@ -29,7 +29,7 @@ def login_page(request):
         if user is None:
             #Display an error message if the authentification fails: "Invalid Password"
             messages.error(request, "Invalid Password")
-            return redirect('/login')
+            return redirect('/login/')
         else:
             #Log the user in and redirect to the home page when successful
             login(request, user)
