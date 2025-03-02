@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+
+    <!-- Bootstrap CSS -->
     <link
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
@@ -11,62 +13,64 @@
   </head>
   <body>
     <div class="container mt-5">
-      <!-- Login form -->
+      <!-- Login Form -->
       <form
-        class="col-6 mx-auto card p-3 shadow-lg"
+        class="col-md-6 mx-auto card p-4 shadow-lg"
         method="post"
         enctype="multipart/form-data"
       >
-        <h1 style="text-align: center">
-          <span style="color: green">Calander App</span>
+        <!-- Application Title -->
+        <h1 class="text-center">
+          <span class="text-success">Calendar App</span>
         </h1>
 
         {% csrf_token %}
         <!-- CSRF token for security -->
 
-        <!-- Login heading -->
-        <h3>Login</h3>
+        <!-- Login Heading -->
+        <h3 class="text-center">Login</h3>
         <hr />
 
-        <!-- Display error/success messages -->
+        <!-- Display Error/Success Messages -->
         {% if messages %}
         <div class="alert alert-primary" role="alert">
           {% for message in messages %} {{ message }} {% endfor %}
         </div>
         {% endif %}
 
-        <!-- Username input field -->
+        <!-- Username Input Field -->
         <div class="form-group">
-          <label for="exampleInputEmail1">Username</label>
+          <label for="username">Username</label>
           <input
             type="text"
             class="form-control"
             name="username"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="username"
             placeholder="Enter username"
             required
           />
         </div>
 
-        <!-- Password input field -->
+        <!-- Password Input Field -->
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label for="password">Password</label>
           <input
             type="password"
             name="password"
             class="form-control"
-            id="exampleInputPassword1"
+            id="password"
             placeholder="Password"
             required
           />
         </div>
 
-        <!-- Link to registration page -->
-        <p>Don't have an account <a href="/register/">Register</a></p>
+        <!-- Registration Link -->
+        <p class="text-center">
+          Don't have an account? <a href="/register/">Register</a>
+        </p>
 
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
       </form>
     </div>
   </body>
