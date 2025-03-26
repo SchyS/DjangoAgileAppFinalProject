@@ -1,21 +1,22 @@
-from django.db import models
+# models.py
 from django.contrib.auth.models import User
+from django.db import models
+from django.utils import timezone
 
-# User Profile Model
-class UserProfile(models.Model):
+class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True, null=True)
-    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
+    # Add any other fields you need
 
     def __str__(self):
-        return self.user.username
+        return f'{self.user.username} Profile'
 
-# Event Model
 class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    date = models.DateTimeField()
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    start_date = models.DateTimeField(default=timezone.now)
+    end_date = models.DateTimeField(default=timezone.now)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='events', default=1)
 
     def __str__(self):
         return self.title
